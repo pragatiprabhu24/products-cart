@@ -11,6 +11,10 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import ButtonGroup from '@mui/material/ButtonGroup';
+import Button from '@mui/material/Button';
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 
 const App = () => {
   const [cart, setCart] = useState([]);
@@ -90,8 +94,21 @@ const App = () => {
                       <TableCell align="center">{row.title}</TableCell>
                       <TableCell align="center">{row.quantity}</TableCell>
                       <TableCell align="center">
-                        <button onClick={() => updateQuantity(row.id, 'increment')}>+</button>
-                        <button onClick={() => updateQuantity(row.id, 'decrement')}>-</button>
+                        <ButtonGroup>
+                          <Button
+                            aria-label="reduce"
+                            onClick={() => updateQuantity(row.id, 'decrement')}
+                          >
+                            <RemoveIcon fontSize="small" />
+                          </Button>
+                          <Button
+                            aria-label="increase"
+                            onClick={() => updateQuantity(row.id, 'increment')}
+                          >
+                            <AddIcon fontSize="small" />
+                          </Button>
+                        </ButtonGroup>
+
                       </TableCell>
                       <TableCell align="center">${row.price}</TableCell>
                     </TableRow>
